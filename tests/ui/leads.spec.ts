@@ -36,7 +36,7 @@ test('Leads Form Fill',async({navigationPage, leadsPage, loggedIn,testData })=>{
   await leadsPage.formFill(testData.leads,leadName);
 });
   
-test.only('Add Campaign',async({ navigationPage,leadsPage,page, loggedIn,testData})=>{
+test('Add Campaign',async({ navigationPage,leadsPage,page, loggedIn,testData})=>{
 
   
  
