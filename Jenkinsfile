@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        BASE_URL = "${{BASE_URL}}"
-        USERNAME = "${{USERNAME}}"
-        PASSWORD = "${{PASSWORD}}"
+        environment {
+        BASE_URL = credentials('BASE_URL')   // BASE_URL is Jenkins Secret Text ID
+        USERNAME = credentials('USERNAME')   // USERNAME Secret Text ID
+        PASSWORD = credentials('PASSWORD')   // PASSWORD Secret Text ID
     }
 
     stages {
