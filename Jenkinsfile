@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-        environment {
-        BASE_URL = credentials('BASE_URL')   // BASE_URL is Jenkins Secret Text ID
-        USERNAME = credentials('USERNAME')   // USERNAME Secret Text ID
-        PASSWORD = credentials('PASSWORD')   // PASSWORD Secret Text ID
+    environment {
+        BASE_URL  = credentials('BASE_URL')   // Secret Text ID
+        USERNAME  = credentials('USERNAME')   // Secret Text ID
+        PASSWORD  = credentials('PASSWORD')   // Secret Text ID
     }
 
     stages {
@@ -15,12 +15,10 @@ pipeline {
             }
         }
 
- 
-
-        stage('Test') {
+        stage('Run Tests') {
             steps {
                 echo 'Running tests...'
-                sh 'npm run test'
+                sh 'npm test'
             }
         }
     }
