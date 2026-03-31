@@ -18,7 +18,7 @@ export const campaignData = {
         targetSize: 40
     },
     deleteCampaign:{
-        campaignId: "CAM10687",
+        campaignId: "CAM15679",
     },
     patchInvoice:{
        invoiceId : "INVOICE_00724",
