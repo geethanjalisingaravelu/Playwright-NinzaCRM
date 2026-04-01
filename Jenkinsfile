@@ -1,12 +1,10 @@
 pipeline {
     agent any
-
     environment {
-        BASE_URL  = credentials('BASE_URL')   // Secret Text ID
-        USERNAME  = credentials('USERNAME')   // Secret Text ID
-        PASSWORD  = credentials('PASSWORD')   // Secret Text ID
+        BASE_URL  = credentials('BASE_URL')
+        USERNAME  = credentials('USERNAME')
+        PASSWORD  = credentials('PASSWORD')
     }
-
     stages {
         stage('Install Dependencies') {
             steps {
@@ -14,18 +12,15 @@ pipeline {
                 sh 'npm install'
             }
         }
-
         stage('Run Tests') {
             steps {
-                echo 'Running tests...'
+                echo 'Running tests...')
                 sh 'npm test'
             }
         }
     }
-
     post {
         always {
-            // HTML Report
             publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -34,11 +29,10 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Playwright HTML Report'
             ])
-
-            // Allure Report
             allure([
                 includeProperties: false,
                 jdk: '',
+                reportBuildStatus: true,
                 results: [[path: 'allure-results']]
             ])
         }
