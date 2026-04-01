@@ -24,6 +24,24 @@ pipeline {
     }
 
     post {
+        always {
+            // HTML Report
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'html-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright HTML Report'
+            ])
+
+            // Allure Report
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
+        }
         success {
             echo 'Pipeline succeeded!'
         }
