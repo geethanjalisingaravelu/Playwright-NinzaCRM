@@ -29,12 +29,12 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Playwright HTML Report'
             ])
-            allure([
-                includeProperties: false,
-                jdk: '',
-                reportBuildStatus: true,
-                results: [[path: 'allure-results']]
-            ])
+       allure([
+        includeProperties: false,
+        jdk: '',
+        reportBuildPolicy: 'ALWAYS',
+        results: [[path: 'allure-results']]
+    ])
         }
         success {
             echo 'Pipeline succeeded!'
